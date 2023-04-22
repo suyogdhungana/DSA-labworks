@@ -7,8 +7,8 @@ public:
     int info;
     Node *next;
 
-    Node() {}
-    Node(int data) : info(data) {}
+    Node() : next(nullptr) {}
+    Node(int data) : info(data), next(nullptr) {}
     Node(int data, Node *next) : info(data), next(next) {}
     ~Node() {}
 };
@@ -28,14 +28,14 @@ public:
     void addToTail(int data);
     void add(int data, Node *pred);
 
+    void traverse();
+
     void removeFromHead();
     void removeFromTail();
     void remove(int data);
 
-    void traverse();
-
-    Node head();
-    Node tail();
+    bool retrieve(int data, Node *outputPtr);
+    bool search(int data);
 };
 
 #endif
