@@ -93,7 +93,8 @@ void LinkedList::removeFromTail()
     {
         if (HEAD == TAIL)
         {
-            HEAD = TAIL = nullptr;
+            HEAD = nullptr;
+            TAIL = nullptr;
         }
         else
         {
@@ -103,6 +104,7 @@ void LinkedList::removeFromTail()
                 pred = pred->next;
             }
             TAIL = pred;
+            TAIL->next = nullptr;
         }
     }
     else
@@ -112,57 +114,16 @@ void LinkedList::removeFromTail()
     delete nodeToDelete;
 }
 
-void LinkedList::remove(int data)
-{
-    if (!isEmpty())
-    {
-        if (HEAD->info == data)
-        {
-            removeFromHead();
-        }
-        else
-        {
-            Node *temp = HEAD->next;
-            Node *prev = HEAD;
-
-            while (temp != nullptr)
-            {
-                if (temp->info == data)
-                    break;
-                else
-                {
-                    prev = prev->next;
-                    temp = temp->next;
-                }
-            }
-
-            if (temp != nullptr)
-            {
-                prev->next = temp->next;
-                delete temp;
-                if (prev->next = nullptr)
-                    TAIL = prev;
-            }
-        }
-    }
-}
-
-bool LinkedList::retrieve(int data, Node *outputPtr)
+Node *LinkedList::retrieve(int data)
 {
     Node *p = HEAD;
-    while (p != nullptr || p->info != data)
+    while (p->next != nullptr)
     {
+        if (p->info == data)
+            return p;
         p = p->next;
     }
-    if (p == nullptr)
-    {
-        return false;
-    }
-    else
-    {
-        outputPtr = p;
-        return true;
-    }
+    return nullptr;
 }
 
 bool LinkedList::search(int data)
@@ -181,5 +142,41 @@ bool LinkedList::search(int data)
     else
     {
         return false;
+    }
+}
+
+void LinkedList::remove(int data)
+{
+    if (search(data))
+    {
+        if (HEAD->info == data)
+        {
+            removeFromHead();
+        }
+        else
+        {
+            Node *temp = HEAD->next;
+            Node *prev = HEAD;
+
+            while (temp != TAIL)
+            {
+                if (temp->info == data)
+                    break;
+                prev = prev->next;
+                temp = temp->next;
+            }
+
+            if (temp != nullptr)
+            {
+                prev->next = temp->next;
+                delete temp;
+                if (prev->next == nullptr)
+                    TAIL = prev;
+            }
+        }
+    }
+    else
+    {
+        std::cout << data << " not found\n";
     }
 }

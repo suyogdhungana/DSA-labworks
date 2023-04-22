@@ -3,24 +3,25 @@
 int main()
 {
     LinkedList list;
-    list.addToHead(7);
-    list.addToHead(10);
-    list.addToTail(5);
+
+    list.addToHead(7);  // 7
+    list.addToHead(10); // 10    7
+    list.addToTail(5);  // 10    7     5
 
     list.traverse();
 
-    Node *ouputPtr;
-    list.retrieve(5, ouputPtr);
-    list.add(2, ouputPtr);
+    Node *outputPtr = list.retrieve(7);
+    // list.retrieve(5, outputPtr);
+    list.add(2, outputPtr); // 10   7   2   5
 
     list.traverse();
 
-    list.removeFromHead();
+    list.removeFromHead(); // 7   2   5
     list.traverse();
 
-    list.removeFromTail();
+    list.remove(2); // 7    5
     list.traverse();
 
-    list.remove(5);
+    list.removeFromTail(); // 7
     list.traverse();
 }

@@ -1,5 +1,6 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
+#include <iostream>
 
 class Node
 {
@@ -34,7 +35,7 @@ public:
     void removeFromTail();
     void remove(int data);
 
-    bool retrieve(int data, Node *outputPtr);
+    Node *retrieve(int data);
     bool search(int data);
 };
 
