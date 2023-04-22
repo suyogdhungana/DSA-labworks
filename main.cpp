@@ -11,7 +11,6 @@ int main()
     list.traverse();
 
     Node *outputPtr = list.retrieve(7);
-    // list.retrieve(5, outputPtr);
     list.add(2, outputPtr); // 10   7   2   5
 
     list.traverse();
