@@ -38,6 +38,9 @@ public:
 
     Node *retrieve(int data);
     bool search(int data);
+
+    int head();
+    int tail();
 };
 
 #endif

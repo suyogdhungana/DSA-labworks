@@ -180,3 +180,29 @@ void LinkedList::remove(int data)
         std::cout << data << " not found\n";
     }
 }
+
+int LinkedList::head()
+{
+    if (!isEmpty())
+    {
+        return HEAD->info;
+    }
+    else
+    {
+        std::cout << "list empty!\n";
+        std::exit(1);
+    }
+}
+
+int LinkedList::tail()
+{
+    if (!isEmpty())
+    {
+        return TAIL->info;
+    }
+    else
+    {
+        std::cout << "list empty!\n";
+        std::exit(1);
+    }
+}
